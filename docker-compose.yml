@@ -1,0 +1,44 @@
+---
+version: '2'
+
+services:
+
+    php:
+        build:
+            context: ./build/php
+            args:
+                remote_host : 192.168.1.100
+        container_name: app
+        working_dir: /code
+        volumes:
+            - "$PWD:/code"
+        ports:
+            - "8080:80"
+        environment:
+            - APP_ENV=dev
+            - PHP_IDE_CONFIG="serverName=app"
+
+    phpunit:
+        build:
+            context: ./build/php
+            args:
+                remote_host : 192.168.1.100
+        container_name: phpunit
+        command: vendor/bin/phpunit
+        working_dir: /code
+        volumes:
+            - "$PWD:/code"
+        environment:
+            - PHP_IDE_CONFIG="serverName=app"
+
+    composer:
+        build:
+            context: ./build/php
+            args:
+                remote_host : 192.168.1.100
+        container_name: composer
+        working_dir: /code
+        volumes:
+            - "$PWD:/code"
+        entrypoint:
+            - composer

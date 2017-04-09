@@ -1,0 +1,22 @@
+{
+    "name": "malotor/common",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "authors": [
+        {
+            "name": "Manel",
+            "email": "malotor@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "malotor\\Common\\": "src/"
+        }
+    },
+    "require": {
+        "psr/log": "^1.0",
+        "php-amqplib/php-amqplib": "^2.6"
+    }
+}
